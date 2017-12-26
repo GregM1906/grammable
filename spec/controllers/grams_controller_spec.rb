@@ -7,11 +7,11 @@ RSpec.describe GramsController, type: :controller do
       get :show, params: { id: gram.id }
       expect(response).to have_http_status(:success)
     end
-  end
 
-  it "should return a 404 error if the gram is not found" do
-    get :show, params: { id: 'TACOCAT' }
-    expect(response).to have_http_status(:not_found)
+    it "should return a 404 error if the gram is not found" do
+      get :show, params: { id: 'TACOCAT' }
+      expect(response).to have_http_status(:not_found)
+    end
   end
 
   describe "grams#index action" do
@@ -20,6 +20,7 @@ RSpec.describe GramsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
+
 
   describe "grams#new action" do
     it "should require users to be logged in" do
@@ -35,6 +36,7 @@ RSpec.describe GramsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
+
 
   describe "grams#create action" do
 
@@ -64,5 +66,6 @@ RSpec.describe GramsController, type: :controller do
       expect(response).to have_http_status(:unprocessable_entity)
       expect(gram_count).to eq Gram.count
     end
+
   end
 end
